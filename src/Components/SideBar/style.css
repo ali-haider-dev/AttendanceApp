@@ -1,0 +1,10 @@
+.SideBar {
+  display: flex;
+  flex-direction: column;
+  width: 13%;
+  height: 100vh;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.SideBar__button {
+  border-bottom: 1px solid lightgrey;
+}
