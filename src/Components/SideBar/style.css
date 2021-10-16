@@ -3,8 +3,13 @@
   flex-direction: column;
   width: 13%;
   height: 100vh;
+  background-color: rgb(255, 255, 255);
+  margin-top: 1px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.SideBar__button {
-  border-bottom: 1px solid lightgrey;
+.SideBar__buttons {
+  border-bottom: 2px solid lightgrey;
+}
+.SideBar__buttons:hover {
+  background-color: whitesmoke;
 }

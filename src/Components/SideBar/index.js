@@ -1,42 +1,43 @@
-import React from "react";
-import { Button, IconButton } from "@mui/material";
-import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import ClassIcon from '@mui/icons-material/Class';
-import PeopleIcon from '@mui/icons-material/People';
-import "./style.css";
+import React from 'react';
+import AddModeratorIcon from '@mui/icons-material/AddModerator';
+import { Menu } from 'antd';
 
-function SideBar() {
-    return (
-        <div className="SideBar">
-            <div className="SideBar__button">
-                <IconButton>
-                    <AdminPanelSettingsIcon />
-                    <Button size="large">
-                        <h4>Teacher</h4>
+const { SubMenu } = Menu;
 
-                    </Button>
-                </IconButton>
-                <hr className="hr" />
+class SideBar extends React.Component {
+    state = {
+        theme: 'dark',
+        current: '1',
+    };
 
-            </div>
-            <div>
-                <IconButton>
-                    <ClassIcon />
-                    <Button size="large">
-                        <h4>Class</h4>
-                    </Button>
-                </IconButton>
-            </div>
-            <div>
-                <IconButton>
-                    <PeopleIcon />
-                    <Button size="large">
-                        <h4>Students</h4>
-                    </Button>
-                </IconButton>
-            </div>
-        </div>
-    );
+
+    handleClick = e => {
+        console.log('click ', e);
+        this.setState({
+            current: e.key,
+        });
+    };
+
+    render() {
+        return (
+            <>
+
+                <Menu
+
+                    theme={this.state.theme}
+                    onClick={this.handleClick}
+                    style={{ width: 256, height: '100vh', marginTop: -42 }}
+                    defaultOpenKeys={['sub1']}
+                    selectedKeys={[this.state.current]}
+                    mode="inline"
+                >
+
+                    <Menu.Item icon key="1">Teachers</Menu.Item>
+                    <Menu.Item key="2">Classes</Menu.Item>
+                    <Menu.Item key="3">Students</Menu.Item>
+                </Menu>
+            </>
+        );
+    }
 }
-
-export default SideBar;
+export default SideBar

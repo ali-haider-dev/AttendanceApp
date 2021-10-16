@@ -1,4 +1,5 @@
 import './App.css';
+import 'antd/dist/antd.css';
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -9,6 +10,7 @@ import {
 import LogIn from "./Components/Login"
 import Home from "./Components/Home"
 import Header from './Components/Header';
+import SideBar from './Components/SideBar';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           <Route path="/home">
             <Header />
             <Home />
+            <SideBar />
+
           </Route>
         </Switch>
 

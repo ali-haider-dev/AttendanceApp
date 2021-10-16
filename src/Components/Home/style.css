@@ -1,0 +1,10 @@
+.home {
+  display: flex;
+  justify-content: end;
+}
+.home__Button {
+  margin-top: 10px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}

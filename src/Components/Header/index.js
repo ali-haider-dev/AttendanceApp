@@ -8,6 +8,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Link } from 'react-router-dom';
+import "./index.css"
 
 function Header() {
     const [anchorEl, setAnchorEl] = React.useState(null)
@@ -20,7 +21,8 @@ function Header() {
     };
     return (
 
-        <AppBar position="static" color="default">
+
+        <AppBar position="static" style={{ background: "#001529" }} className="appbar">
             <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     Photos
@@ -61,6 +63,7 @@ function Header() {
 
             </Toolbar>
         </AppBar>
+
 
     )
 }
