@@ -1,43 +1,47 @@
-import React from 'react';
-import AddModeratorIcon from '@mui/icons-material/AddModerator';
-import { Menu } from 'antd';
+import React, { useState } from "react";
+import { Divider, Menu } from "antd";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import ClassIcon from "@mui/icons-material/Class";
+import "./style.css";
+import { useHistory } from "react-router-dom";
 
 const { SubMenu } = Menu;
 
-class SideBar extends React.Component {
-    state = {
-        theme: 'dark',
-        current: '1',
+function SideBar() {
+
+    const [theme, setTheme] = useState("light");
+    const [select, setSelect] = useState();
+    const history = useHistory()
+    const handleClick = (e) => {
+        return setSelect(e.key);
     };
 
-
-    handleClick = e => {
-        console.log('click ', e);
-        this.setState({
-            current: e.key,
-        });
-    };
-
-    render() {
-        return (
-            <>
-
-                <Menu
-
-                    theme={this.state.theme}
-                    onClick={this.handleClick}
-                    style={{ width: 256, height: '100vh', marginTop: -42 }}
-                    defaultOpenKeys={['sub1']}
-                    selectedKeys={[this.state.current]}
-                    mode="inline"
-                >
-
-                    <Menu.Item icon key="1">Teachers</Menu.Item>
-                    <Menu.Item key="2">Classes</Menu.Item>
-                    <Menu.Item key="3">Students</Menu.Item>
-                </Menu>
-            </>
-        );
-    }
+    return (
+        <div className="SideBar">
+            <Menu
+                theme={theme}
+                onClick={(e) => {
+                    handleClick(e);
+                }}
+                style={{ width: 200, height: "100vh", marginTop: -42 }}
+                defaultOpenKeys={["sub1"]}
+                selectedKeys={select}
+                mode="inline"
+            >
+                <Menu.Item onClick={() => history.push("/Teacher")} icon={<AdminPanelSettingsIcon />} key="1">
+                    Teacher
+                </Menu.Item>
+                <Divider />
+                <Menu.Item onClick={() => history.push("/Student")} icon={<PeopleAltIcon />} key="2">
+                    Students
+                </Menu.Item>
+                <Divider />
+                <Menu.Item onClick={() => history.push("/Class")} icon={<ClassIcon />} key="3">
+                    Classes
+                </Menu.Item>
+            </Menu>
+        </div>
+    );
 }
-export default SideBar
+export default SideBar;

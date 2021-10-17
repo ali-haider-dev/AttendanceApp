@@ -4,10 +4,11 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Modal, Button } from "antd";
 import { Form, Input } from "antd";
 
-function Home() {
+function CLasses() {
     const [visible, setVisible] = React.useState(false);
-    const [name, setName] = React.useState([]);
-    const [number, setNumber] = React.useState([]);
+    const [className, setClassName] = React.useState([]);
+    const [timing, setTiming] = React.useState([]);
+    const [teacher, setTeacher] = React.useState([]);
     const [confirmLoading, setConfirmLoading] = React.useState(false);
 
     const showModal = () => {
@@ -17,7 +18,6 @@ function Home() {
     const handleOk = () => {
         setConfirmLoading(true);
         setTimeout(() => {
-
             setVisible(false);
             setConfirmLoading(false);
         }, 2000);
@@ -36,18 +36,19 @@ function Home() {
         console.log("Failed:", errorInfo);
     };
 
-    console.log(name);
-    console.log(number);
+    console.log(className);
+    console.log(timing);
+    console.log(teacher);
 
     return (
-        <div className="home">
+        <div className="Classes">
             <Button
                 onClick={showModal}
-                className="home__button"
+                className="Classes__button"
                 type="primary"
                 shape="round"
             >
-                <span style={{ marginRight: "5px" }}>Add Teacher</span><AddCircleOutlineIcon fontSize="small" />{" "}
+                <span style={{ marginRight: "5px" }}>Add Class</span> <AddCircleOutlineIcon fontSize="small" />{" "}
             </Button>
             <Modal
                 title="Add Teacher"
@@ -57,7 +58,7 @@ function Home() {
                 onCancel={handleCancel}
             >
                 <Form
-                    className="home__form"
+                    className="Classes__form"
                     name="basic"
                     labelCol={{
                         span: 8,
@@ -73,29 +74,42 @@ function Home() {
                     autoComplete="off"
                 >
                     <Form.Item
-                        label="Name"
-                        name="Name"
+                        label="ClassName"
+                        name="ClassName"
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your Name!",
+                                message: "Please input your ClassName!",
                             },
                         ]}
                     >
-                        <Input onChange={(e) => setName(e.target.value)} />
+                        <Input onChange={(e) => setClassName(e.target.value)} />
                     </Form.Item>
 
                     <Form.Item
-                        label="Phone No:"
-                        name="Phone Number"
+                        label="Timing"
+                        name="Timing"
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your Phone Number!",
+                                message: "Please input the Class Timing",
                             },
                         ]}
                     >
-                        <Input onChange={(e) => setNumber(e.target.value)} />
+                        <Input onChange={(e) => setTiming(e.target.value)} />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Teacher"
+                        name="Teacher"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please input the Teacher Name",
+                            },
+                        ]}
+                    >
+                        <Input onChange={(e) => setTeacher(e.target.value)} />
                     </Form.Item>
 
                     <Form.Item
@@ -110,4 +124,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default CLasses;

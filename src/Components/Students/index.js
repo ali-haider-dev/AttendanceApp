@@ -4,9 +4,10 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Modal, Button } from "antd";
 import { Form, Input } from "antd";
 
-function Home() {
+function Students() {
     const [visible, setVisible] = React.useState(false);
     const [name, setName] = React.useState([]);
+    const [className, setClassName] = React.useState([]);
     const [number, setNumber] = React.useState([]);
     const [confirmLoading, setConfirmLoading] = React.useState(false);
 
@@ -17,7 +18,6 @@ function Home() {
     const handleOk = () => {
         setConfirmLoading(true);
         setTimeout(() => {
-
             setVisible(false);
             setConfirmLoading(false);
         }, 2000);
@@ -38,26 +38,27 @@ function Home() {
 
     console.log(name);
     console.log(number);
+    console.log(className)
 
     return (
-        <div className="home">
+        <div className="Student">
             <Button
                 onClick={showModal}
-                className="home__button"
+                className="Student__button"
                 type="primary"
                 shape="round"
             >
-                <span style={{ marginRight: "5px" }}>Add Teacher</span><AddCircleOutlineIcon fontSize="small" />{" "}
+                <span style={{ marginRight: "5px" }}>Add Student</span><AddCircleOutlineIcon fontSize="small" />{" "}
             </Button>
             <Modal
-                title="Add Teacher"
+                title="Add Student"
                 visible={visible}
                 onOk={handleOk}
                 confirmLoading={confirmLoading}
                 onCancel={handleCancel}
             >
                 <Form
-                    className="home__form"
+                    className="Student__form"
                     name="basic"
                     labelCol={{
                         span: 8,
@@ -86,7 +87,7 @@ function Home() {
                     </Form.Item>
 
                     <Form.Item
-                        label="Phone No:"
+                        label="Phone No :"
                         name="Phone Number"
                         rules={[
                             {
@@ -96,6 +97,18 @@ function Home() {
                         ]}
                     >
                         <Input onChange={(e) => setNumber(e.target.value)} />
+                    </Form.Item>
+                    <Form.Item
+                        label="Class :"
+                        name="Class"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please input your Class Name!",
+                            },
+                        ]}
+                    >
+                        <Input onChange={(e) => setClassName(e.target.value)} />
                     </Form.Item>
 
                     <Form.Item
@@ -110,4 +123,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Students;
