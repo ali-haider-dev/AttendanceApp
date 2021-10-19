@@ -9,12 +9,14 @@ import SideBar from "./Components/SideBar";
 import Students from "./Components/Students";
 import CLasses from "./Components/Classes";
 
+
+
 function App() {
   return (
     <div className="app">
       <Router>
         <Switch>
-          <Route path="/" exact>
+          <Route path="/" exact>                                                                                 
             <Login />
           </Route>
           <Route path="/home">

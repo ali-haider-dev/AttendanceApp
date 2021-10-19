@@ -7,6 +7,8 @@ import { Form, Input } from "antd";
 function Home() {
     const [visible, setVisible] = React.useState(false);
     const [name, setName] = React.useState([]);
+    const [age, setAge] = React.useState([]);
+    const [role, setRole] = React.useState([]);
     const [number, setNumber] = React.useState([]);
     const [confirmLoading, setConfirmLoading] = React.useState(false);
 
@@ -17,7 +19,6 @@ function Home() {
     const handleOk = () => {
         setConfirmLoading(true);
         setTimeout(() => {
-
             setVisible(false);
             setConfirmLoading(false);
         }, 2000);
@@ -38,6 +39,8 @@ function Home() {
 
     console.log(name);
     console.log(number);
+    console.log(role);
+    console.log(age);
 
     return (
         <div className="home">
@@ -47,12 +50,14 @@ function Home() {
                 type="primary"
                 shape="round"
             >
-                <span style={{ marginRight: "5px" }}>Add Teacher</span><AddCircleOutlineIcon fontSize="small" />{" "}
+                <span style={{ marginRight: "5px" }}>Add Faculty</span>
+                <AddCircleOutlineIcon fontSize="small" />{" "}
             </Button>
             <Modal
                 title="Add Teacher"
                 visible={visible}
                 onOk={handleOk}
+                okText="Save"
                 confirmLoading={confirmLoading}
                 onCancel={handleCancel}
             >
@@ -73,7 +78,7 @@ function Home() {
                     autoComplete="off"
                 >
                     <Form.Item
-                        label="Name"
+                        style={{ width: "150%" }}
                         name="Name"
                         rules={[
                             {
@@ -82,11 +87,30 @@ function Home() {
                             },
                         ]}
                     >
-                        <Input onChange={(e) => setName(e.target.value)} />
+                        <Input
+                            placeholder="Name"
+                            onChange={(e) => setName(e.target.value)}
+                        />
                     </Form.Item>
 
                     <Form.Item
-                        label="Phone No:"
+                        style={{ width: "150%" }}
+                        name="Age"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please Enter Your Age",
+                            },
+                        ]}
+                    >
+                        <Input
+                            placeholder="Age"
+                            onChange={(e) => setAge(e.target.value)}
+                        />
+                    </Form.Item>
+
+                    <Form.Item
+                        style={{ width: "150%" }}
                         name="Phone Number"
                         rules={[
                             {
@@ -95,9 +119,26 @@ function Home() {
                             },
                         ]}
                     >
-                        <Input onChange={(e) => setNumber(e.target.value)} />
+                        <Input
+                            placeholder="Phone Number"
+                            onChange={(e) => setNumber(e.target.value)}
+                        />
                     </Form.Item>
-
+                    <Form.Item
+                        style={{ width: "150%", marginBottom: -50 }}
+                        name="Role"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please Enter Teacher Role",
+                            },
+                        ]}
+                    >
+                        <Input
+                            placeholder="Role"
+                            onChange={(e) => setRole(e.target.value)}
+                        />
+                    </Form.Item>
                     <Form.Item
                         wrapperCol={{
                             offset: 8,

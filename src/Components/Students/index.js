@@ -1,13 +1,15 @@
 import React from "react";
 import "./style.css";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { Modal, Button } from "antd";
-import { Form, Input } from "antd";
+import { Modal, Button, DatePicker } from "antd";
+import { Form, Input, Select } from "antd";
 
 function Students() {
     const [visible, setVisible] = React.useState(false);
     const [name, setName] = React.useState([]);
-    const [className, setClassName] = React.useState([]);
+    const [address, setAddress] = React.useState([]);
+    const [gender, setGender] = React.useState([]);
+    const [date, setDate] = React.useState([]);
     const [number, setNumber] = React.useState([]);
     const [confirmLoading, setConfirmLoading] = React.useState(false);
 
@@ -38,7 +40,9 @@ function Students() {
 
     console.log(name);
     console.log(number);
-    console.log(className)
+    console.log(gender);
+    console.log(date);
+    console.log(address);
 
     return (
         <div className="Student">
@@ -48,9 +52,11 @@ function Students() {
                 type="primary"
                 shape="round"
             >
-                <span style={{ marginRight: "5px" }}>Add Student</span><AddCircleOutlineIcon fontSize="small" />{" "}
+                <span style={{ marginRight: "5px" }}>Add Student</span>
+                <AddCircleOutlineIcon fontSize="small" />{" "}
             </Button>
             <Modal
+
                 title="Add Student"
                 visible={visible}
                 onOk={handleOk}
@@ -74,7 +80,7 @@ function Students() {
                     autoComplete="off"
                 >
                     <Form.Item
-                        label="Name"
+                        style={{ width: "150%" }}
                         name="Name"
                         rules={[
                             {
@@ -83,12 +89,30 @@ function Students() {
                             },
                         ]}
                     >
-                        <Input onChange={(e) => setName(e.target.value)} />
+                        <Input
+                            placeholder="Name"
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </Form.Item>
+                    <Form.Item
+                        style={{ width: "150%" }}
+                        name="Address"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please Enter Your Address",
+                            },
+                        ]}
+                    >
+                        <Input
+                            placeholder="Address"
+                            onChange={(e) => setAddress(e.target.value)}
+                        />
                     </Form.Item>
 
                     <Form.Item
-                        label="Phone No :"
                         name="Phone Number"
+                        style={{ width: "150%" }}
                         rules={[
                             {
                                 required: true,
@@ -96,21 +120,23 @@ function Students() {
                             },
                         ]}
                     >
-                        <Input onChange={(e) => setNumber(e.target.value)} />
+                        <Input
+                            placeholder="Phone Number"
+                            onChange={(e) => setNumber(e.target.value)}
+                        />
                     </Form.Item>
-                    <Form.Item
-                        label="Class :"
-                        name="Class"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please input your Class Name!",
-                            },
-                        ]}
-                    >
-                        <Input onChange={(e) => setClassName(e.target.value)} />
+                    <Form.Item name="Gender" style={{ width: "150%" }}>
+                        <Select onChange={(e) => setGender(e.target.value)} placeholder="Gender">
+                            <Select.Option value="Male">Male</Select.Option>
+                            <Select.Option value="Female">Female</Select.Option>
+                        </Select>
                     </Form.Item>
+                    <Form.Item name="Date"
+                        style={{ marginBottom: -50 }}
 
+                    >
+                        <DatePicker onChange={(e) => setDate(e.target.value)} style={{ width: "150%" }} placeholder="Date Of Birth" />
+                    </Form.Item>
                     <Form.Item
                         wrapperCol={{
                             offset: 8,

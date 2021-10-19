@@ -6,9 +6,11 @@ import { Form, Input } from "antd";
 
 function CLasses() {
     const [visible, setVisible] = React.useState(false);
-    const [className, setClassName] = React.useState([]);
-    const [timing, setTiming] = React.useState([]);
-    const [teacher, setTeacher] = React.useState([]);
+    const [room, setRoom] = React.useState([]);
+    const [time, setTime] = React.useState([]);
+    const [id, setID] = React.useState([]);
+    const [subject, setSubject] = React.useState([]);
+    const [faculty, setFaculty] = React.useState([]);
     const [confirmLoading, setConfirmLoading] = React.useState(false);
 
     const showModal = () => {
@@ -36,9 +38,11 @@ function CLasses() {
         console.log("Failed:", errorInfo);
     };
 
-    console.log(className);
-    console.log(timing);
-    console.log(teacher);
+    console.log(id);
+    console.log(subject);
+    console.log(room);
+    console.log(time);
+    console.log(faculty);
 
     return (
         <div className="Classes">
@@ -48,7 +52,8 @@ function CLasses() {
                 type="primary"
                 shape="round"
             >
-                <span style={{ marginRight: "5px" }}>Add Class</span> <AddCircleOutlineIcon fontSize="small" />{" "}
+                <span style={{ marginRight: "5px" }}>Add Class</span>{" "}
+                <AddCircleOutlineIcon fontSize="small" />{" "}
             </Button>
             <Modal
                 title="Add Teacher"
@@ -74,42 +79,80 @@ function CLasses() {
                     autoComplete="off"
                 >
                     <Form.Item
-                        label="ClassName"
-                        name="ClassName"
+                        style={{ width: "150%" }}
+                        name="ID"
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your ClassName!",
+                                message: "Please Enter Your ID!",
                             },
                         ]}
                     >
-                        <Input onChange={(e) => setClassName(e.target.value)} />
+                        <Input placeholder="ID" onChange={(e) => setID(e.target.value)} />
                     </Form.Item>
 
                     <Form.Item
-                        label="Timing"
-                        name="Timing"
+                        style={{ width: "150%" }}
+                        name="Subject"
                         rules={[
                             {
                                 required: true,
-                                message: "Please input the Class Timing",
+                                message: "Please Enter Your Subject Name",
                             },
                         ]}
                     >
-                        <Input onChange={(e) => setTiming(e.target.value)} />
+                        <Input
+                            placeholder="Subject Name"
+                            onChange={(e) => setSubject(e.target.value)}
+                        />
                     </Form.Item>
 
                     <Form.Item
-                        label="Teacher"
-                        name="Teacher"
+                        name="Faculty"
+                        style={{ width: "150%" }}
                         rules={[
                             {
                                 required: true,
-                                message: "Please input the Teacher Name",
+                                message: "Please Enter the Faculty Name",
                             },
                         ]}
                     >
-                        <Input onChange={(e) => setTeacher(e.target.value)} />
+                        <Input
+                            placeholder="Faculty"
+                            onChange={(e) => setFaculty(e.target.value)}
+                        />
+                    </Form.Item>
+
+                    <Form.Item
+                        style={{ width: "150%" }}
+                        name="Time"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please Enter the Class Timing",
+                            },
+                        ]}
+                    >
+                        <Input
+                            placeholder="Time"
+                            onChange={(e) => setTime(e.target.value)}
+                        />
+                    </Form.Item>
+
+                    <Form.Item
+                        style={{ width: "150%", marginBottom: -50 }}
+                        name="Room"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please Enter the Room No",
+                            },
+                        ]}
+                    >
+                        <Input
+                            placeholder="Room No"
+                            onChange={(e) => setRoom(e.target.value)}
+                        />
                     </Form.Item>
 
                     <Form.Item
